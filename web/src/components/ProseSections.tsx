@@ -14,10 +14,10 @@ export default function ProseSections(props: Props) {
       <div className="prose-blocks section__inner">
       	{
       		sections.map((s) => (
-      			<section className="prose-block">
+      			<section key={s.heading} className="prose-block">
       				<h2 className="prose-block__h">{s.heading}</h2>
-      				{s.body.map((p) => (
-      					<p>{p}</p>
+      				{s.body.map((p, i) => (
+      					<p key={i}>{p}</p>
       				))}
       			</section>
       		))

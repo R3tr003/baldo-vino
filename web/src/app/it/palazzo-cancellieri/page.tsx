@@ -15,7 +15,7 @@ export default function Page() {
       			imageAlt="Palazzo"
       		/>
       		<div className="section__inner prose-block">
-      			{palazzo.intro.map((p) => <p>{p}</p>)}
+      			{palazzo.intro.map((p, i) => <p key={i}>{p}</p>)}
       			<p>
       				<a className="btn" href="/it/palazzo-cancellieri/palazzo-ganucci-cancellieri/">Palazzo Ganucci Cancellieri</a>
       			</p>

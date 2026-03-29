@@ -1,0 +1,22 @@
+.highlights {
+	list-style: none;
+	margin: 0 0 var(--space-md);
+	padding: 0;
+	display: grid;
+	gap: var(--space-sm);
+}
+
+.highlights li {
+	margin: 0;
+	padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
+	border-left: 2px solid var(--color-accent-2);
+	font-size: 0.95rem;
+	line-height: 1.55;
+	font-weight: 400;
+	color: var(--color-ink-muted);
+}
+
+.highlightsDark li {
+	border-left-color: var(--color-accent-2);
+	color: var(--color-dark-text-muted);
+}

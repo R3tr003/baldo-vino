@@ -1,43 +1,301 @@
-:global {
-  	.hub {
-  		padding: 0 var(--space-md) var(--space-2xl);
-  	}
-  
-  	.hub__list {
-  		list-style: none;
-  		margin: 0;
-  		padding: 0;
-  		display: grid;
-  		gap: 0;
-  		max-width: 34rem;
-  		border-top: 1px solid var(--color-line);
-  	}
-  
-  	.hub__link {
-  		display: flex;
-  		justify-content: space-between;
-  		align-items: center;
-  		padding: 1rem 0.1rem;
-  		text-decoration: none;
-  		color: var(--color-ink);
-  		border-bottom: 1px solid var(--color-line);
-  		font-family: var(--font-display);
-  		font-size: clamp(1.4rem, 3.2vw, 2.2rem);
-  		transition:
-  			color 0.25s var(--ease-out),
-  			padding-left 0.25s var(--ease-out);
-  	}
-  
-  	.hub__link::after {
-  		content: '→';
-  		font-size: 0.9rem;
-  		letter-spacing: 0.1em;
-  		text-transform: uppercase;
-  		font-family: var(--font-body);
-  	}
-  
-  	.hub__link:hover {
-  		color: var(--color-accent);
-  		padding-left: 0.35rem;
-  	}
+.landingBibBand {
+	background: var(--color-bg-dark);
+	color: var(--color-dark-text);
+	padding: var(--space-xl) 0;
+	margin-top: calc(-1 * var(--space-md));
+	position: relative;
+}
+
+.landingBibBandInner {
+	display: grid;
+	gap: var(--space-xl);
+	align-items: center;
+}
+
+@media (min-width: 900px) {
+	.landingBibBandInner {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+		gap: var(--space-2xl);
+	}
+}
+
+.landingBibBandCopy {
+	padding: 0 var(--space-md);
+	order: 1;
+}
+
+@media (min-width: 900px) {
+	.landingBibBandCopy {
+		order: 0;
+	}
+}
+
+.landingBibBandLine {
+	background: rgba(240, 232, 220, 0.28);
+}
+
+.landingBibBandEyebrow {
+	margin: 0 0 var(--space-xs);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--color-accent-2);
+}
+
+.landingBibBandTitle {
+	margin: 0 0 var(--space-md);
+	font-family: var(--font-display);
+	font-size: clamp(1.85rem, 4vw, 2.65rem);
+	line-height: 1.08;
+	font-weight: 700;
+	color: var(--color-dark-text);
+}
+
+.landingBibBandText {
+	margin: 0 0 var(--space-md);
+	font-size: 1.02rem;
+	line-height: 1.78;
+	font-weight: 300;
+	color: var(--color-dark-text-muted);
+	max-width: 36rem;
+}
+
+.landingBibBandText:last-of-type {
+	margin-bottom: 0;
+}
+
+.landingBibBandFigure {
+	margin: 0;
+	padding: 0 var(--space-md);
+	order: 0;
+}
+
+@media (min-width: 900px) {
+	.landingBibBandFigure {
+		order: 1;
+		padding: 0 var(--space-md) 0 0;
+	}
+}
+
+.landingBibBandImg {
+	width: 100%;
+	height: auto;
+	display: block;
+	border-radius: var(--radius-lg);
+	object-fit: cover;
+	aspect-ratio: 4 / 3;
+	box-shadow: var(--shadow-dramatic);
+}
+
+@media (min-width: 900px) {
+	.landingBibBandImg {
+		transform: translateX(3%);
+	}
+}
+
+.landingBibBandCaption {
+	margin: var(--space-sm) 0 0;
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-dark-text-muted);
+}
+
+.landingBibNav {
+	padding: var(--space-xl) 0 var(--space-2xl);
+}
+
+.landingBibNavHeader {
+	max-width: 38rem;
+	margin-bottom: var(--space-xl);
+	padding: 0 var(--space-md);
+}
+
+.landingBibNavKicker {
+	margin: 0 0 var(--space-xs);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.landingBibNavTitle {
+	margin: 0 0 var(--space-sm);
+	font-family: var(--font-display);
+	font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+	line-height: 1.1;
+	color: var(--color-ink);
+}
+
+.landingBibNavLead {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.7;
+	font-weight: 300;
+	color: var(--color-ink-light);
+}
+
+.landingBibNavGrid {
+	list-style: none;
+	margin: 0;
+	padding: 0 var(--space-md);
+	display: grid;
+	gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+	.landingBibNavGrid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-md);
+	}
+}
+
+@media (min-width: 1100px) {
+	.landingBibNavGrid {
+		gap: var(--space-lg);
+	}
+}
+
+.landingBibNavItem {
+	margin: 0;
+}
+
+.landingBibCard {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+	background: var(--color-paper);
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-soft);
+	transition:
+		border-color 0.35s var(--ease-out),
+		box-shadow 0.35s var(--ease-out),
+		transform 0.25s var(--ease-out);
+	-webkit-tap-highlight-color: transparent;
+}
+
+.landingBibCard:active {
+	transform: scale(0.992);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.landingBibCard:hover {
+		border-color: var(--color-accent);
+		box-shadow: var(--shadow-dramatic);
+	}
+
+	.landingBibCard:hover .landingBibCardImg {
+		transform: scale(1.04);
+	}
+
+	.landingBibCard:hover .landingBibCardCta {
+		color: var(--color-accent-hover);
+	}
+}
+
+.landingBibCard:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+}
+
+.landingBibCardMedia {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 16 / 10;
+}
+
+.landingBibCardImg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.55s var(--ease-out);
+}
+
+.landingBibCardVeil {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		180deg,
+		transparent 35%,
+		rgba(20, 17, 16, 0.5) 100%
+	);
+	pointer-events: none;
+}
+
+.landingBibCardBody {
+	padding: var(--space-md) var(--space-md) var(--space-lg);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+	flex: 1;
+}
+
+.landingBibCardEyebrow {
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-accent-2-dim);
+}
+
+.landingBibCardTitle {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.landingBibCardDesc {
+	margin: 0 0 var(--space-sm);
+	font-size: 0.92rem;
+	line-height: 1.65;
+	font-weight: 300;
+	color: var(--color-ink-muted);
+	flex: 1;
+}
+
+.landingBibCardCta {
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-accent);
+	margin-top: auto;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.landingBibCloser {
+	padding: var(--space-lg) var(--space-md) var(--space-2xl);
+	border-top: 1px solid var(--color-line);
+	background: var(--color-bg-warm);
+}
+
+.landingBibCloserInner {
+	max-width: 40rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.landingBibCloserLine {
+	margin: 0 0 var(--space-md);
+	font-size: 1.05rem;
+	line-height: 1.65;
+	font-weight: 300;
+	color: var(--color-ink-muted);
+}
+
+.landingBibCloserActions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+	justify-content: center;
 }

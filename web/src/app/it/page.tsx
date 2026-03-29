@@ -57,9 +57,9 @@ export default function Page() {
       						{home.cantinaLead}
       					</h2>
       					<ul className="cantina-strip__points">
-      						{home.cantinaPoints.map((point) => (
-      							<li>{point}</li>
-      						))}
+						{home.cantinaPoints.map((point) => (
+     							<li key={point}>{point}</li>
+     						))}
       					</ul>
       					<div className="cantina-strip__links">
       						<a className="btn" href="/it/cantina/baldo-vino/">Cantina Baldo Vino</a>

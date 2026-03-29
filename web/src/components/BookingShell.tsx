@@ -28,9 +28,9 @@ export default function BookingShell() {
       			<div className="booking__row">
       				<label className="booking__label" htmlFor="guests">Persone</label>
       				<select className="booking__control" id="guests" name="guests">
-      					{Array.from({ length: 6 }, (_, i) => (
-      						<option value={i + 1}>{i + 1} {i === 0 ? 'persona' : 'persone'}</option>
-      					))}
+					{Array.from({ length: 6 }, (_, i) => (
+     						<option key={i + 1} value={i + 1}>{i + 1} {i === 0 ? 'persona' : 'persone'}</option>
+     					))}
       				</select>
       			</div>
       			<div className="booking__row">
@@ -42,18 +42,18 @@ export default function BookingShell() {
       					<span className="booking__label" id="slot-lunch">Pranzo</span>
       					<select className="booking__control" name="time_lunch" aria-labelledby="slot-lunch">
       						<option value="">—</option>
-      						{lunchSlots.map((t) => (
-      							<option value={t}>{t}</option>
-      						))}
+						{lunchSlots.map((t) => (
+     							<option key={t} value={t}>{t}</option>
+     						))}
       					</select>
       				</div>
       				<div>
       					<span className="booking__label" id="slot-dinner">Cena</span>
       					<select className="booking__control" name="time_dinner" aria-labelledby="slot-dinner">
       						<option value="">—</option>
-      						{dinnerSlots.map((t) => (
-      							<option value={t}>{t}</option>
-      						))}
+						{dinnerSlots.map((t) => (
+     							<option key={t} value={t}>{t}</option>
+     						))}
       					</select>
       				</div>
       			</div>

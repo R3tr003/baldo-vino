@@ -1381,16 +1381,22 @@ a.secondary {
     display: grid;
     grid-template-columns: 1fr;
     background: var(--color-paper);
+    min-height: 0;
+    isolation: isolate;
   }
 
   .editorial--dark {
     background: var(--color-bg-dark);
     color: #f0e8dc;
+    /* Copre il refilo da subpixel / body background-attachment tra sezioni */
+    margin-top: -1px;
+    padding-top: 1px;
   }
 
   .editorial__visual {
     position: relative;
     overflow: hidden;
+    min-height: 0;
   }
 
   .editorial__visual img {
@@ -1444,6 +1450,10 @@ a.secondary {
   @media (min-width: 980px) {
     .editorial {
       grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .editorial > * {
+      min-height: 0;
     }
 
     .editorial--reverse {

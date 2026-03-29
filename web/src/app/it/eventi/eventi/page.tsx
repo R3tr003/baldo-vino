@@ -15,7 +15,7 @@ export default function Page() {
       			imageAlt="Eventi"
       		/>
       		<div className="section__inner prose-block">
-      			{eventi.body.map((p) => <p>{p}</p>)}
+      			{eventi.body.map((p, i) => <p key={i}>{p}</p>)}
       			<p>
       				<a className="btn btn--primary" href="/it/contatti/contatti/">Contattaci</a>
       			</p>
