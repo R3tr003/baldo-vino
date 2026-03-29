@@ -10,6 +10,7 @@ export default function CookieBanner() {
 
   useEffect(() => {
     if (!sessionStorage.getItem(KEY)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHidden(false);
     }
   }, []);

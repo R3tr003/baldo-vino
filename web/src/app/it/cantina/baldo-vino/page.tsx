@@ -1,21 +1,36 @@
 import BaseLayout from '@/components/BaseLayout';
 import PageIntro from '@/components/PageIntro';
 import WineCatalog from '@/components/WineCatalog';
-import { winesBaldo } from '@/data/wines-baldo';
+import { winesBaldo as winesBaldoFallback } from '@/data/wines-baldo';
 import { images } from '@/data/assets';
+import { client } from '@/lib/sanity';
+import { winesBaldoQuery } from '@/lib/queries';
+import type { Wine } from '@/types/wine';
 import styles from './page.module.css';
+
+async function getWines(): Promise<Wine[]> {
+  if (!client) return winesBaldoFallback;
+  try {
+    const data = await client.fetch<Wine[]>(winesBaldoQuery);
+    if (data && data.length > 0) return data;
+  } catch {
+    // Sanity non disponibile — uso fallback locale
+  }
+  return winesBaldoFallback;
+}
 
 export default async function Page(props: {
   searchParams: Promise<{ kiosk?: string }>;
 }) {
   const searchParams = await props.searchParams;
   const isKiosk = searchParams.kiosk === '1';
+  const wines = await getWines();
 
   if (isKiosk) {
     return (
       <main id="main">
         <WineCatalog
-          wines={winesBaldo}
+          wines={wines}
           isKiosk
           kioskLogo={images.navMark}
         />
@@ -68,7 +83,7 @@ export default async function Page(props: {
           </article>
         </section>
 
-        <WineCatalog wines={winesBaldo} />
+        <WineCatalog wines={wines} />
 
         <div className={`section__inner ${styles.actions}`}>
           <a className="btn btn--primary" href="/it/baldo-vino/baldo-vino/">

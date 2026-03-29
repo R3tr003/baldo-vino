@@ -1,0 +1,37 @@
+import { defineField, defineType } from 'sanity';
+
+export const homepageSchema = defineType({
+  name: 'homepage',
+  title: 'Homepage',
+  type: 'document',
+  fields: [
+    defineField({ name: 'heroTitle', title: 'Hero Title', type: 'string' }),
+    defineField({ name: 'heroSubtitle', title: 'Hero Subtitle', type: 'string' }),
+    defineField({ name: 'heroLead', title: 'Hero Lead', type: 'text' }),
+    defineField({ name: 'heroImage', title: 'Hero Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'manifesto', title: 'Manifesto', type: 'text' }),
+    defineField({ name: 'quote', title: 'Quote', type: 'text' }),
+    defineField({ name: 'quoteAuthor', title: 'Quote Author', type: 'string' }),
+    defineField({ name: 'baldoTeaserTitle', title: 'Baldo Teaser Title', type: 'string' }),
+    defineField({ name: 'baldoTeaserKicker', title: 'Baldo Teaser Kicker', type: 'string' }),
+    defineField({ name: 'baldoTeaser', title: 'Baldo Teaser', type: 'text' }),
+    defineField({ name: 'baldoImage', title: 'Baldo Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'bibendumTeaserTitle', title: 'Bibendum Teaser Title', type: 'string' }),
+    defineField({ name: 'bibendumTeaserKicker', title: 'Bibendum Teaser Kicker', type: 'string' }),
+    defineField({ name: 'bibendumTeaser', title: 'Bibendum Teaser', type: 'text' }),
+    defineField({ name: 'bibendumImage', title: 'Bibendum Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'eventiTitle', title: 'Eventi Title', type: 'string' }),
+    defineField({ name: 'eventiTeaser', title: 'Eventi Teaser', type: 'text' }),
+    defineField({ name: 'eventiImage', title: 'Eventi Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'cantinaTitle', title: 'Cantina Kicker', type: 'string' }),
+    defineField({ name: 'cantinaLead', title: 'Cantina Lead', type: 'text' }),
+    defineField({
+      name: 'cantinaPoints',
+      title: 'Cantina Points',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({ name: 'legalNote', title: 'Legal Note', type: 'text' }),
+  ],
+  preview: { select: { title: 'heroTitle' } },
+});

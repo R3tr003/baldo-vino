@@ -1,21 +1,36 @@
 import BaseLayout from '@/components/BaseLayout';
 import PageIntro from '@/components/PageIntro';
 import WineCatalog from '@/components/WineCatalog';
-import { winesBibendum } from '@/data/wines-bibendum';
+import { winesBibendum as winesBibendumFallback } from '@/data/wines-bibendum';
 import { images } from '@/data/assets';
+import { client } from '@/lib/sanity';
+import { winesBibendumQuery } from '@/lib/queries';
+import type { Wine } from '@/types/wine';
 import styles from './page.module.css';
+
+async function getWines(): Promise<Wine[]> {
+  if (!client) return winesBibendumFallback;
+  try {
+    const data = await client.fetch<Wine[]>(winesBibendumQuery);
+    if (data && data.length > 0) return data;
+  } catch {
+    // Sanity non disponibile — uso fallback locale
+  }
+  return winesBibendumFallback;
+}
 
 export default async function Page(props: {
   searchParams: Promise<{ kiosk?: string }>;
 }) {
   const searchParams = await props.searchParams;
   const isKiosk = searchParams.kiosk === '1';
+  const wines = await getWines();
 
   if (isKiosk) {
     return (
       <main id="main">
         <WineCatalog
-          wines={winesBibendum}
+          wines={wines}
           isKiosk
           kioskLogo={images.navMark}
         />
@@ -52,7 +67,7 @@ export default async function Page(props: {
           </article>
         </section>
 
-        <WineCatalog wines={winesBibendum} />
+        <WineCatalog wines={wines} />
 
         <div className={`section__inner ${styles.note}`}>
           <p>

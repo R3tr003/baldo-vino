@@ -22,8 +22,14 @@ export default function WineCatalog({
 }: WineCatalogProps) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<WineCategory | 'tutti'>('tutti');
+  const [country, setCountry] = useState<string>('tutti');
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const availableCountries = useMemo(() => {
+    const countries = new Set(wines.map((w) => w.paese).filter(Boolean));
+    return Array.from(countries).sort();
+  }, [wines]);
 
   const filtered = useMemo(() => {
     let result = wines;
@@ -32,18 +38,23 @@ export default function WineCatalog({
       result = result.filter((w) => w.categoria === category);
     }
 
+    if (country !== 'tutti') {
+      result = result.filter((w) => w.paese === country);
+    }
+
     if (search.trim()) {
       const q = search.toLowerCase().trim();
       result = result.filter(
         (w) =>
           w.nome.toLowerCase().includes(q) ||
           w.produttore.toLowerCase().includes(q) ||
-          w.regione.toLowerCase().includes(q),
+          w.regione.toLowerCase().includes(q) ||
+          (w.paese && w.paese.toLowerCase().includes(q)),
       );
     }
 
     return result;
-  }, [wines, category, search]);
+  }, [wines, category, country, search]);
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -58,6 +69,7 @@ export default function WineCatalog({
   const resetFilters = () => {
     setSearch('');
     setCategory('tutti');
+    setCountry('tutti');
   };
 
   return (
@@ -87,7 +99,7 @@ export default function WineCatalog({
             id="wine-search"
             type="search"
             className={styles.searchInput}
-            placeholder="Cerca per nome, produttore, regione…"
+            placeholder="Cerca per nome, produttore, regione, paese…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             autoComplete="off"
@@ -114,6 +126,40 @@ export default function WineCatalog({
             </button>
           ))}
         </div>
+
+        {availableCountries.length > 0 && (
+          <div
+            className={styles.filters}
+            role="group"
+            aria-label="Filtra per paese"
+          >
+            <button
+              type="button"
+              className={clsx(
+                styles.chip,
+                country === 'tutti' && styles.chipActive,
+              )}
+              onClick={() => setCountry('tutti')}
+              aria-pressed={country === 'tutti'}
+            >
+              Tutti i Paesi
+            </button>
+            {availableCountries.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className={clsx(
+                  styles.chip,
+                  country === c && styles.chipActive,
+                )}
+                onClick={() => setCountry(c)}
+                aria-pressed={country === c}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <p className={styles.risultati} aria-live="polite">

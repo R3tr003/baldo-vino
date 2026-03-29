@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  transpilePackages: ['next-sanity', 'sanity'],
   redirects: async () => [
     {
       source: "/it/contatti",

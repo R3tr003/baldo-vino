@@ -2,27 +2,48 @@ import BaseLayout from '@/components/BaseLayout';
 import HomeHero from '@/components/HomeHero';
 import BookingShell from '@/components/BookingShell';
 import EditorialSplit from '@/components/EditorialSplit';
-import { home } from '@/data/home';
+import { home as homeFallback } from '@/data/home';
 import { images } from '@/data/assets';
+import { client } from '@/lib/sanity';
+import { homepageQuery } from '@/lib/queries';
 
-export default function Page() {
+async function getHomeData() {
+  if (!client) return null;
+  try {
+    const data = await client.fetch(homepageQuery);
+    if (data) return data;
+  } catch {
+    // Sanity non disponibile — uso il fallback locale
+  }
+  return null;
+}
+
+export default async function Page() {
+  const sanityHome = await getHomeData();
+
+  // Merge: i valori Sanity sovrascrivono il fallback locale
+  const home = {
+    ...homeFallback,
+    ...(sanityHome ?? {}),
+  };
+
   return (
     <>
       <BaseLayout title="Baldo Vino — Enoteca Ristorante Gourmet a Pistoia">
       	<main id="main">
       		<HomeHero />
-      
+
       		<div className="section-divider" aria-hidden="true"></div>
-      
+
       		<section className="manifesto section reveal" aria-labelledby="manifesto-title">
       			<div className="manifesto__inner">
       				<p className="kicker">Manifesto</p>
-      				<h2 id="manifesto-title">{home.heroMantra}</h2>
+      				<h2 id="manifesto-title">{sanityHome?.manifesto ?? home.heroMantra}</h2>
       			</div>
       		</section>
-      
+
       		<div className="section-divider" aria-hidden="true"></div>
-      
+
       		<EditorialSplit
       			kicker={home.baldoTeaserKicker}
       			title={home.baldoTeaserTitle}
@@ -32,7 +53,7 @@ export default function Page() {
       			image={images.heroBaldo}
       			imageAlt="Sala del ristorante Baldo Vino"
       		/>
-      
+
       		<EditorialSplit
       			kicker={home.bibendumTeaserKicker}
       			title={home.bibendumTeaserTitle}
@@ -44,7 +65,7 @@ export default function Page() {
       			reverse={true}
       			tone="dark"
       		/>
-      
+
       		<section className="section cantina-strip" aria-labelledby="sec-cantina">
       			<div className="section__inner cantina-strip__inner">
       				<div className="cantina-strip__statement reveal--left">
@@ -57,9 +78,9 @@ export default function Page() {
       						{home.cantinaLead}
       					</h2>
       					<ul className="cantina-strip__points">
-						{home.cantinaPoints.map((point) => (
-     							<li key={point}>{point}</li>
-     						))}
+						{home.cantinaPoints?.map((point: string) => (
+     					 	<li key={point}>{point}</li>
+     					 ))}
       					</ul>
       					<div className="cantina-strip__links">
       						<a className="btn" href="/it/cantina/baldo-vino/">Cantina Baldo Vino</a>
@@ -68,7 +89,7 @@ export default function Page() {
       				</div>
       			</div>
       		</section>
-      
+
       		<section className="quote-band section" aria-labelledby="sec-quote">
       			<div className="quote-band__inner reveal--scale">
       				<p className="quote-band__label" id="sec-quote">Parole</p>
@@ -78,9 +99,9 @@ export default function Page() {
       				</blockquote>
       			</div>
       		</section>
-      
+
       		<div className="section-divider" aria-hidden="true"></div>
-      
+
       		<section className="events section" aria-labelledby="sec-eventi">
       			<div className="section__inner events__inner">
       				<div className="events__copy reveal--left">
@@ -94,9 +115,9 @@ export default function Page() {
       				</div>
       			</div>
       		</section>
-      
+
       		<BookingShell />
-      
+
       		<section className="section legal" aria-label="Note legali">
       			<div className="section__inner narrow">
       				<p className="legal-note">{home.legalNote}</p>
