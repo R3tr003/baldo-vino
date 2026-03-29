@@ -1,0 +1,8 @@
+:global {
+  	.cta-row {
+  		display: flex;
+  		flex-wrap: wrap;
+  		gap: var(--space-md);
+  		padding: 0 var(--space-md) var(--space-2xl);
+  	}
+}

@@ -1,0 +1,11 @@
+:global {
+  	.prose-block {
+  		padding: 0 var(--space-md) var(--space-2xl);
+  		max-width: 42rem;
+  	}
+  
+  	.prose-block p {
+  		line-height: 1.75;
+  		margin-bottom: var(--space-md);
+  	}
+}

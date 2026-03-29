@@ -1,0 +1,6 @@
+:global {
+  	.note {
+  		padding: 0 var(--space-md) var(--space-2xl);
+  		color: var(--color-ink-muted);
+  	}
+}

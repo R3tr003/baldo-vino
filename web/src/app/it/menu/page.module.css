@@ -1,0 +1,58 @@
+:global {
+  	.menu-hub {
+  		padding: 0 var(--space-md) var(--space-2xl);
+  		display: grid;
+  		gap: var(--space-md);
+  	}
+  
+  	@media (min-width: 960px) {
+  		.menu-hub {
+  			grid-template-columns: 1fr 1fr;
+  		}
+  	}
+  
+  	.menu-card {
+  		padding: var(--space-lg);
+  		border: 1px solid var(--color-line);
+  		border-radius: var(--radius-lg);
+  		background: var(--color-paper);
+  		display: grid;
+  		gap: var(--space-sm);
+  	}
+  
+  	.menu-card--soft {
+  		background: #f3ecdf;
+  	}
+  
+  	.menu-card__kicker {
+  		margin: 0;
+  		font-size: 0.72rem;
+  		letter-spacing: 0.14em;
+  		text-transform: uppercase;
+  		color: var(--color-ink-muted);
+  	}
+  
+  	.menu-card h2 {
+  		margin: 0;
+  		font-size: clamp(1.7rem, 3vw, 2.4rem);
+  	}
+  
+  	.menu-card p {
+  		margin: 0;
+  		color: var(--color-ink-muted);
+  		line-height: 1.75;
+  	}
+  
+  	.menu-card ul {
+  		margin: 0;
+  		padding-left: 1.1rem;
+  		display: grid;
+  		gap: 0.25rem;
+  		color: var(--color-ink);
+  	}
+  
+  	.menu-card .btn {
+  		justify-self: start;
+  		margin-top: var(--space-sm);
+  	}
+}

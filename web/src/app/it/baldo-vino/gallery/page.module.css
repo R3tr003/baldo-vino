@@ -1,0 +1,12 @@
+:global {
+  	.gallery-placeholder {
+  		padding: 0 var(--space-md) var(--space-2xl);
+  		max-width: 40rem;
+  		color: var(--color-ink-muted);
+  	}
+  
+  	.gallery-placeholder code {
+  		color: var(--color-accent-gold);
+  		font-size: 0.9em;
+  	}
+}

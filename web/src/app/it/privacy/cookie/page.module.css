@@ -1,0 +1,8 @@
+:global {
+  	.legal {
+  		padding: 0 var(--space-md) var(--space-2xl);
+  		max-width: 42rem;
+  		line-height: 1.75;
+  		color: var(--color-ink-muted);
+  	}
+}
