@@ -1,0 +1,102 @@
+---
+---
+
+<div
+	class="cookie-banner"
+	id="cookie-banner"
+	role="dialog"
+	aria-labelledby="cookie-title"
+	aria-describedby="cookie-desc"
+	aria-modal="true"
+	hidden
+>
+	<div class="cookie-banner__panel">
+		<h2 class="cookie-banner__title" id="cookie-title">Cookie e privacy</h2>
+		<p class="cookie-banner__text" id="cookie-desc">
+			Questa e' una versione in anteprima: il banner e' pronto per essere collegato alla policy ufficiale e agli
+			strumenti di consenso (es. analytics) nella fase di pubblicazione.
+		</p>
+		<div class="cookie-banner__actions">
+			<button type="button" class="btn" id="cookie-customize" disabled>Personalizza</button>
+			<button type="button" class="btn" id="cookie-reject">Rifiuta</button>
+			<button type="button" class="btn btn--primary" id="cookie-accept">Accetta (chiudi)</button>
+		</div>
+		<p class="cookie-banner__fine">
+			<a href="/it/privacy/cookie/">Informativa cookie</a>
+			·
+			<a href="/it/privacy/privacy/">Privacy</a>
+		</p>
+	</div>
+</div>
+
+<script>
+	const KEY = 'baldo_cookie_banner_dismissed';
+	const banner = document.getElementById('cookie-banner');
+	const accept = document.getElementById('cookie-accept');
+	const reject = document.getElementById('cookie-reject');
+	if (banner && accept && reject && !sessionStorage.getItem(KEY)) {
+		banner.hidden = false;
+		const close = () => {
+			banner.hidden = true;
+			sessionStorage.setItem(KEY, '1');
+		};
+		accept.addEventListener('click', close);
+		reject.addEventListener('click', close);
+	}
+</script>
+
+<style>
+	.cookie-banner {
+		position: fixed;
+		inset: 0;
+		z-index: 200;
+		display: grid;
+		place-items: end center;
+		padding: var(--space-md);
+		background: rgba(5, 4, 3, 0.65);
+		backdrop-filter: blur(6px);
+	}
+
+	.cookie-banner[hidden] {
+		display: none;
+	}
+
+	.cookie-banner__panel {
+		max-width: 520px;
+		width: 100%;
+		padding: var(--space-lg);
+		background: var(--color-paper);
+		border: 1px solid var(--color-line);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-dramatic);
+	}
+
+	.cookie-banner__title {
+		margin: 0 0 var(--space-sm);
+		font-size: 1.35rem;
+		color: var(--color-accent-2);
+	}
+
+	.cookie-banner__text {
+		margin: 0 0 var(--space-md);
+		font-size: 0.95rem;
+		color: var(--color-ink-muted);
+	}
+
+	.cookie-banner__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-sm);
+	}
+
+	.cookie-banner__fine {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--color-ink-muted);
+	}
+
+	.cookie-banner__fine a {
+		text-decoration: none;
+	}
+</style>

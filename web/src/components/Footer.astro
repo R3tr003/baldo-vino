@@ -1,0 +1,187 @@
+---
+import { venues } from '../data/venues';
+const v = venues;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="site-footer__grid section__inner">
+		<div class="site-footer__block">
+			<h2 class="site-footer__title">{v.baldo.name}</h2>
+			<p class="site-footer__subtitle">{v.baldo.subtitle}</p>
+			<p class="site-footer__meta">{v.baldo.address}</p>
+			<p class="site-footer__meta">
+				<a href={v.baldo.phoneHref}>{v.baldo.phone}</a>
+			</p>
+			<p class="site-footer__hours">
+				<strong>{v.baldo.hoursWeek}</strong><br />
+				{v.baldo.hoursWeekText}
+			</p>
+			<p class="site-footer__hours">
+				<strong>{v.baldo.hoursSunTitle}</strong><br />
+				{v.baldo.hoursSunText}
+			</p>
+			<p class="site-footer__social">
+				<a href={v.baldo.facebook} rel="noopener noreferrer" target="_blank">Facebook</a>
+				<span aria-hidden="true"> · </span>
+				<a href={v.baldo.instagram} rel="noopener noreferrer" target="_blank">Instagram</a>
+			</p>
+		</div>
+
+		<div class="site-footer__block">
+			<h2 class="site-footer__title">{v.bibendum.name}</h2>
+			<p class="site-footer__subtitle">{v.bibendum.subtitle}</p>
+			<p class="site-footer__meta">{v.bibendum.address}</p>
+			<p class="site-footer__meta">
+				<a href={v.bibendum.phoneHref}>{v.bibendum.phone}</a>
+				<br />
+				<a href={v.bibendum.phoneMobileHref}>{v.bibendum.phoneMobile}</a>
+			</p>
+			<p class="site-footer__hours">
+				<strong>{v.bibendum.hoursWeek}</strong><br />
+				{v.bibendum.hoursWeekText}
+			</p>
+			<p class="site-footer__hours">
+				<strong>{v.bibendum.hoursWeekendTitle}</strong><br />
+				{v.bibendum.hoursWeekendText}
+			</p>
+			<p class="site-footer__social">
+				<a href={v.bibendum.facebook} rel="noopener noreferrer" target="_blank">Facebook</a>
+				<span aria-hidden="true"> · </span>
+				<a href={v.bibendum.instagram} rel="noopener noreferrer" target="_blank">Instagram</a>
+			</p>
+		</div>
+
+		<div class="site-footer__block site-footer__newsletter">
+			<h2 class="site-footer__title">Newsletter</h2>
+			<p class="site-footer__subtitle">Novità, degustazioni, nuovo menù? Lasciaci la tua email.</p>
+			<form class="site-footer__form" action="#" method="post" aria-label="Iscrizione newsletter">
+				<label class="sr-only" for="newsletter-email-footer">Email</label>
+				<input
+					id="newsletter-email-footer"
+					class="site-footer__input"
+					type="email"
+					name="email"
+					placeholder="La tua email"
+					autocomplete="email"
+					disabled
+				/>
+				<label class="site-footer__check">
+					<input type="checkbox" name="privacy" disabled />
+					<span>Ho letto l’informativa privacy (modulo attivabile nella prossima fase)</span>
+				</label>
+				<button type="button" class="btn btn--primary" disabled>Invia</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="site-footer__bottom section__inner">
+		<p class="site-footer__legal">
+			© {year} BALDO VINO S.R.L. società unipersonale · P.IVA 01370050476
+		</p>
+		<p class="site-footer__links">
+			<a href="/it/privacy/cookie/">Cookie</a>
+			<span aria-hidden="true"> · </span>
+			<a href="/it/privacy/privacy/">Privacy</a>
+		</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: var(--space-2xl);
+		padding: var(--space-xl) 0 var(--space-lg);
+		background: var(--color-bg-dark);
+		color: #ece4d6;
+		border-top: 1px solid rgba(236, 228, 214, 0.2);
+	}
+
+	.site-footer__grid {
+		display: grid;
+		gap: var(--space-xl);
+		padding: 0 var(--space-md);
+	}
+
+	@media (min-width: 900px) {
+		.site-footer__grid {
+			grid-template-columns: 1fr 1fr 1.1fr;
+			align-items: start;
+		}
+	}
+
+	.site-footer__title {
+		margin: 0 0 var(--space-xs);
+		font-size: 1.5rem;
+		color: #fff;
+	}
+
+	.site-footer__subtitle {
+		margin: 0 0 var(--space-sm);
+		font-family: var(--font-display);
+		font-style: italic;
+		color: rgba(236, 228, 214, 0.78);
+	}
+
+	.site-footer__meta,
+	.site-footer__hours,
+	.site-footer__social {
+		margin: 0 0 var(--space-sm);
+		font-size: 0.95rem;
+		font-weight: 300;
+	}
+
+	.site-footer a {
+		color: #fff;
+	}
+
+	.site-footer__social a {
+		text-decoration: none;
+	}
+
+	.site-footer__input {
+		width: 100%;
+		padding: 0.65rem 0.85rem;
+		margin-bottom: var(--space-sm);
+		border-radius: var(--radius-sm);
+		border: 1px solid var(--color-line);
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(236, 228, 214, 0.9);
+		font-family: inherit;
+		transition: border-color 0.2s var(--ease-out);
+	}
+
+	.site-footer__input:focus {
+		border-color: var(--color-accent-2);
+		outline: none;
+	}
+
+	.site-footer__check {
+		display: flex;
+		gap: var(--space-sm);
+		align-items: flex-start;
+		font-size: 0.85rem;
+		color: rgba(236, 228, 214, 0.74);
+		margin-bottom: var(--space-sm);
+	}
+
+	.site-footer__bottom {
+		margin-top: var(--space-xl);
+		padding: var(--space-md) var(--space-md) 0;
+		border-top: 1px solid rgba(236, 228, 214, 0.2);
+		text-align: center;
+		font-size: 0.85rem;
+		color: rgba(236, 228, 214, 0.74);
+	}
+
+	.site-footer__legal {
+		margin: 0 0 var(--space-xs);
+	}
+
+	.site-footer__links {
+		margin: 0;
+	}
+
+	.site-footer__links a {
+		text-decoration: none;
+	}
+</style>

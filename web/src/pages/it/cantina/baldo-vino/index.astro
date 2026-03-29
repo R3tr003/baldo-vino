@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../../components/PageIntro.astro';
+---
+
+<BaseLayout title="Cantina — Baldo Vino">
+	<main id="main">
+		<PageIntro
+			title="Cantina Baldo Vino"
+			subtitle="Oltre 3000 referenze"
+			lead="Una cantina in continua evoluzione, costruita negli anni con ricerca costante, attenzione agli Champagne e ampiezza internazionale."
+		/>
+
+		<div class="section__inner note">
+			<blockquote>
+				“La mia passione per il vino, e una ricerca continua, mi hanno portato a collezionare etichette provenienti
+				da molti Paesi, con una particolare attenzione agli Champagne.” — Francesco Balloni
+			</blockquote>
+		</div>
+
+		<section class="section__inner pillars" aria-label="Punti chiave della cantina">
+			<article>
+				<h2>Selezione</h2>
+				<p>Verticalita', annate e produttori iconici accanto a etichette da scoperta, con una curatela costante.</p>
+			</article>
+			<article>
+				<h2>Abbinamento</h2>
+				<p>Percorsi pensati per dialogare con la cucina, dal calice al pairing completo nei menu degustazione.</p>
+			</article>
+			<article>
+				<h2>Servizio</h2>
+				<p>Consulenza in sala e carta in aggiornamento continuo, per accompagnare ogni tavolo con precisione.</p>
+			</article>
+		</section>
+
+		<div class="section__inner actions">
+			<a class="btn btn--primary" href="/it/baldo-vino/baldo-vino/">Il ristorante</a>
+			<a class="btn" href="/it/contatti/contatti/">Contatta la sala</a>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.note {
+		padding: 0 var(--space-md) var(--space-lg);
+		max-width: 56rem;
+		color: var(--color-ink);
+	}
+
+	.note blockquote {
+		margin: 0;
+		padding: var(--space-lg);
+		border: 1px solid var(--color-line);
+		border-radius: var(--radius-lg);
+		background: #f3ecdf;
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+		line-height: 1.35;
+	}
+
+	.pillars {
+		padding: 0 var(--space-md) var(--space-xl);
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 900px) {
+		.pillars {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.pillars article {
+		padding: var(--space-md);
+		border-top: 1px solid var(--color-line-strong);
+	}
+
+	.pillars h2 {
+		margin: 0 0 var(--space-sm);
+		font-size: 1.4rem;
+	}
+
+	.pillars p {
+		margin: 0;
+		color: var(--color-ink-muted);
+		line-height: 1.75;
+	}
+
+	.actions {
+		padding: 0 var(--space-md) var(--space-2xl);
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm);
+	}
+</style>

@@ -1,0 +1,49 @@
+{
+  "plugins": {
+    "supabase": {
+      "enabled": true
+    },
+    "frontend-design": {
+      "enabled": true,
+      "note": "Skill principale per UI/UX: usarla prima di MD di design e prima del codice interfaccia."
+    }
+  },
+  "baldoVino": {
+    "site": "https://www.enotecabaldovino.it",
+    "goal": "Rinnovo visivo (fase iniziale: solo front-end; backend, prenotazione reale, newsletter e CMS in fase successiva).",
+    "content": {
+      "locale": "it",
+      "sourceFolder": "Scaping/",
+      "description": "Testi e struttura da export markdown in Scaping/; mantenere gerarchia informativa e doppio brand Baldo Vino + Bibendum."
+    },
+    "routing": {
+      "pattern": "Speculare slug attuali /it/... (allineamento SEO al go-live o redirect pianificati)."
+    },
+    "stack": {
+      "recommended": "Astro o Next.js in modalità statica; CSS (Tailwind o moduli); nessun backend in questa fase."
+    },
+    "designWorkflow": {
+      "primaryPlugin": "frontend-design",
+      "rules": [
+        "Prima di creare o aggiornare file .md di design (look & feel, design system, token) o prima di implementare componenti/pagine UI: leggere e applicare lo skill/plugin frontend-design (direzione estetica chiara, tipografie distintive, variabili CSS, motion mirata, layout intenzionale, dettagli atmosferici; evitare estetica generica da template).",
+        "Opzionale ma consigliato prima di congelare palette/layout: skill brainstorming (superpowers) per esplorare intent e varianti creative.",
+        "Altri plugin Cursor importati (analytics, trading, ecc.) non sostituiscono questo workflow per il design del sito.",
+        "Prenotazione e newsletter: solo UI shell/stub finché non è definito il backend.",
+        "Privacy/cookie/testi legali: non inventare; placeholder fino a testo da consulente."
+      ]
+    },
+    "pagesPriority": [
+      "Layout globale + home",
+      "Template venue riusabile (Baldo Vino, Bibendum)",
+      "Hub Menù / Cantina",
+      "Contatti, Palazzo Cancellieri, Eventi",
+      "Placeholder legali/cookie"
+    ],
+    "verification": [
+      "Responsive 375 / 768 / 1280+",
+      "Contrasto, focus, accessibilità di base",
+      "Lighthouse ragionevole su pagine principali"
+    ],
+    "planReference": "Piano dettagliato: Cursor Plans → file rinnovo_visivo_baldo_vino_a6e1bb96.plan.md (cartella piani Cursor)."
+  }
+}

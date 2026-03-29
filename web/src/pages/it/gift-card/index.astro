@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../components/PageIntro.astro';
+---
+
+<BaseLayout title="Gift card — Baldo Vino">
+	<main id="main">
+		<PageIntro
+			title="Gift card"
+			subtitle="Un regalo da gustare"
+			lead="Qui potrai acquistare o regalare un'esperienza Baldo Vino: attivazione in arrivo nella prossima fase."
+		/>
+		<div class="section__inner note">
+			<p>Nessun pagamento è attivo in questa build statica.</p>
+			<a class="btn" href="/it/contatti/contatti/">Scrivici</a>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.note {
+		padding: 0 var(--space-md) var(--space-2xl);
+		max-width: 40rem;
+		color: var(--color-ink-muted);
+	}
+
+	.note p {
+		margin-bottom: var(--space-md);
+	}
+</style>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../../components/PageIntro.astro';
+import { images } from '../../../../data/assets';
+import { palazzo } from '../../../../data/longCopy';
+---
+
+<BaseLayout title="Palazzo Ganucci Cancellieri — Pistoia">
+	<main id="main">
+		<PageIntro
+			title={palazzo.ganucciTitle}
+			subtitle="Pistoia"
+			lead={palazzo.ganucciLead}
+			image={images.heroInterior}
+			imageAlt="Palazzo storico"
+		/>
+		<div class="section__inner note">
+			<p>
+				In questa sezione verra' inserito l'approfondimento storico completo su Palazzo Ganucci Cancellieri, dopo
+				revisione editoriale.
+			</p>
+			<a class="btn" href="/it/palazzo-cancellieri/">Torna a Palazzo Cancellieri</a>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.note {
+		padding: 0 var(--space-md) var(--space-2xl);
+		max-width: 42rem;
+		color: var(--color-ink-muted);
+	}
+
+	.note p {
+		margin-bottom: var(--space-md);
+	}
+</style>

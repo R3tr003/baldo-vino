@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../../components/PageIntro.astro';
+import { images } from '../../../../data/assets';
+---
+
+<BaseLayout title="Menu — Baldo Vino">
+	<main id="main">
+		<PageIntro
+			title="Menu Baldo Vino"
+			subtitle="Ristorante gourmet"
+			lead="Un percorso di cucina contemporanea con anima toscana: menu degustazione e carta in evoluzione stagionale."
+			image={images.heroBaldo}
+			imageAlt="Menu degustazione Baldo Vino"
+		/>
+
+		<section class="section__inner menu-detail" aria-label="Offerta menu Baldo Vino">
+			<article class="menu-detail__block">
+				<h2>Percorsi degustazione</h2>
+				<ul>
+					<li>4 portate — 60 €</li>
+					<li>6 portate — 80 €</li>
+					<li>8 portate — 100 €</li>
+				</ul>
+			</article>
+
+			<article class="menu-detail__block">
+				<h2>Wine pairing</h2>
+				<ul>
+					<li>3 calici — 50 €</li>
+					<li>5 calici — 70 €</li>
+					<li>7 calici — 90 €</li>
+				</ul>
+			</article>
+		</section>
+
+		<section class="section__inner menu-story">
+			<p>
+				La proposta alterna mare e terra, con una ricerca costante sull'equilibrio tra tecnica,
+				materia prima e leggibilita del gusto.
+			</p>
+			<div class="menu-story__actions">
+				<a class="btn btn--primary" href="/it/cantina/baldo-vino/">Abbina con la cantina</a>
+				<a class="btn" href="/it/contatti/contatti/">Prenota o richiedi info</a>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.menu-detail {
+		padding: 0 var(--space-md) var(--space-lg);
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 920px) {
+		.menu-detail {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.menu-detail__block {
+		padding: var(--space-lg);
+		border: 1px solid var(--color-line);
+		border-radius: var(--radius-lg);
+		background: var(--color-paper);
+	}
+
+	.menu-detail__block h2 {
+		margin: 0 0 var(--space-sm);
+		font-size: clamp(1.45rem, 2.5vw, 2rem);
+	}
+
+	.menu-detail__block ul {
+		margin: 0;
+		padding-left: 1.1rem;
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	.menu-story {
+		padding: 0 var(--space-md) var(--space-2xl);
+		max-width: 58rem;
+	}
+
+	.menu-story p {
+		margin: 0 0 var(--space-md);
+		color: var(--color-ink-muted);
+		line-height: 1.8;
+	}
+
+	.menu-story__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm);
+	}
+</style>

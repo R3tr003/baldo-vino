@@ -1,0 +1,126 @@
+---
+import { images } from '../data/assets';
+import { home } from '../data/home';
+---
+
+<section class="hero" aria-label="Introduzione">
+	<div class="hero__media">
+		<img src={images.heroBaldo} alt="Baldo Vino nel Palazzo Cancellieri" width="1920" height="1080" loading="eager" />
+		<div class="hero__veil" aria-hidden="true" />
+	</div>
+	<div class="hero__content section__inner animate-in">
+		<p class="hero__eyebrow animate-in">{home.eyebrow}</p>
+		<h1 class="hero__title animate-in delay-1">{home.heroTitle}</h1>
+		<p class="hero__subtitle animate-in delay-2">{home.heroSubtitle}</p>
+		<p class="hero__lead animate-in delay-3">{home.heroLead}</p>
+		<div class="hero__actions animate-in delay-4">
+			<a class="btn btn--primary" href="#prenota">Prenota</a>
+			<a class="btn" href="/it/menu/">Scopri il menu</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: min(90vh, 920px);
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: min(12vh, 8rem);
+	}
+
+	.hero__media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.hero__media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.hero__veil {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			180deg,
+			rgba(10, 8, 8, 0.25) 0%,
+			rgba(10, 8, 8, 0.65) 45%,
+			rgba(10, 8, 8, 0.9) 100%
+		);
+	}
+
+	.hero__content {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		padding: 0 var(--space-md);
+		color: var(--color-hero-text);
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 var(--space-sm);
+		font-size: 0.78rem;
+		font-weight: 300;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--color-hero-text-muted);
+	}
+
+	.hero__title {
+		margin: 0 0 var(--space-xs);
+		font-size: clamp(2.7rem, 7.5vw, 5.8rem);
+		line-height: 0.93;
+		max-width: 12ch;
+	}
+
+	.hero__subtitle {
+		margin: 0 0 var(--space-sm);
+		font-size: clamp(1.05rem, 2vw, 1.35rem);
+		font-weight: 300;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-hero-text-muted);
+		max-width: 32ch;
+	}
+
+	.hero__lead {
+		margin: 0 0 var(--space-md);
+		max-width: 42ch;
+		font-size: 1rem;
+		font-weight: 300;
+		color: rgba(249, 244, 236, 0.92);
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-sm);
+		align-items: center;
+	}
+
+	.hero__actions .btn {
+		color: var(--color-hero-text);
+		border-color: rgba(249, 244, 236, 0.45);
+		background: rgba(15, 12, 10, 0.25);
+		backdrop-filter: blur(4px);
+	}
+
+	.hero__actions .btn:hover {
+		background: rgba(249, 244, 236, 0.14);
+		border-color: var(--color-hero-text);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	}
+
+	.hero__actions .btn--primary {
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		backdrop-filter: none;
+	}
+
+	.hero__actions .btn--primary:hover {
+		box-shadow: 0 6px 24px rgba(109, 36, 49, 0.4);
+	}
+</style>

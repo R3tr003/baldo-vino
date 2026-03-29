@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Enoteca Ristorante Gourmet e Bistrot Bibendum — Palazzo Cancellieri, Pistoia.' } =
+	Astro.props;
+const fullTitle = title.includes('Baldo Vino') ? title : `${title} · Baldo Vino`;
+---
+
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<title>{fullTitle}</title>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Vai al contenuto</a>
+		<Header />
+		<div class="page-wrap">
+			<slot />
+		</div>
+		<Footer />
+		<CookieBanner />
+		<script>
+			const revealEls = document.querySelectorAll('.reveal, .reveal--left, .reveal--right, .reveal--scale');
+			if (revealEls.length && 'IntersectionObserver' in window) {
+				const io = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((e) => {
+							if (e.isIntersecting) {
+								e.target.classList.add('is-visible');
+								io.unobserve(e.target);
+							}
+						});
+					},
+					{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+				);
+				revealEls.forEach((el) => io.observe(el));
+			} else {
+				revealEls.forEach((el) => el.classList.add('is-visible'));
+			}
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	.skip-link {
+		position: absolute;
+		left: -9999px;
+		top: auto;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		z-index: 300;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--color-accent-2);
+		color: var(--color-bg-dark);
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: var(--radius-sm);
+	}
+
+	.skip-link:focus {
+		left: var(--space-md);
+		top: var(--space-md);
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+</style>
