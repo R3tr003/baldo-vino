@@ -46,7 +46,12 @@ export default function WineCard({ wine, onSelect, isSelected }: WineCardProps) 
       </div>
 
       <p className={styles.prezzo}>
-        €&thinsp;{wine.prezzo}
+        {wine.prezzo.toLocaleString('it-IT', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        })}
       </p>
 
       {isSelected && (

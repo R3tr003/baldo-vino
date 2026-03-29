@@ -30,8 +30,7 @@ export default function Header() {
         <div className="site-header__inner">
           <div className="site-header__bar">
             <a className="site-header__brand" href="/it/" aria-label="Baldo Vino — Home">
-              <img src={images.navMark} alt="" width="42" height="42" loading="eager" />
-              <span className="site-header__wordmark">Baldo Vino</span>
+              <img src={images.navMark} alt="Baldo Vino" width="120" height="120" loading="eager" style={{ height: '48px', width: 'auto', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.25))' }} />
             </a>
 
             <nav className="site-header__quick" aria-label="Accesso rapido">

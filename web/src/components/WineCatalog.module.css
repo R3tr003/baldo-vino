@@ -120,6 +120,16 @@
   outline-offset: 2px;
 }
 
+/* ───── Results count ───── */
+
+.risultati {
+  margin: calc(var(--space-sm) * -1) 0 var(--space-md);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
 /* ───── Wine grid ───── */
 
 .grid {

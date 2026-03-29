@@ -116,6 +116,12 @@ export default function WineCatalog({
         </div>
       </div>
 
+      <p className={styles.risultati} aria-live="polite">
+        {filtered.length === 1
+          ? '1 etichetta trovata'
+          : `${filtered.length} etichette trovate`}
+      </p>
+
       {filtered.length > 0 ? (
         <div className={clsx(styles.grid, isKiosk && styles.gridKiosk)}>
           {filtered.map((wine) => (

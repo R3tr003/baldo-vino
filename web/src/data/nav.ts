@@ -10,7 +10,7 @@ export type NavGroup = {
 
 export const overlayMenuLinks: NavLink[] = [
 	{ label: 'Benvenuti', href: '/it/' },
-	{ label: 'Baldo Vino', href: '/it/baldo-vino/baldo-vino/' },
+	{ label: 'Ristorante', href: '/it/baldo-vino/baldo-vino/' },
 	{ label: 'Bibendum', href: '/it/bibendum/bibendum/' },
 	{ label: 'Cantina', href: '/it/cantina/' },
 	{ label: 'Eventi', href: '/it/eventi/eventi/' },
@@ -19,7 +19,7 @@ export const overlayMenuLinks: NavLink[] = [
 ];
 
 export const quickLinks: NavLink[] = [
-	{ label: 'Baldo Vino', href: '/it/baldo-vino/baldo-vino/' },
+	{ label: 'Ristorante', href: '/it/baldo-vino/baldo-vino/' },
 	{ label: 'Bibendum', href: '/it/bibendum/bibendum/' },
 	{ label: 'Cantina', href: '/it/cantina/' },
 	{ label: 'Eventi', href: '/it/eventi/eventi/' },

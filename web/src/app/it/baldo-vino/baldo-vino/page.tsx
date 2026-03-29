@@ -1,6 +1,5 @@
 import BaseLayout from '@/components/BaseLayout';
 import PageIntro from '@/components/PageIntro';
-import SectionQuote from '@/components/SectionQuote';
 import VenueShowcase from '@/components/VenueShowcase';
 import { images } from '@/data/assets';
 import { baldoVenuePage } from '@/data/venuePresentations';
@@ -27,16 +26,6 @@ export default function Page() {
           </div>
         ))}
 
-        <div className="section-divider" aria-hidden="true" />
-
-        <SectionQuote
-          quote="La mia passione per il vino, e una ricerca continua, mi hanno portato a collezionare nella mia cantina etichette provenienti da molti Paesi, con una particolare attenzione agli champagne. Ogni bottiglia racconta una storia e un viaggio, sprigionando emozioni."
-          author="Francesco Balloni"
-        />
-
-        <div className="section-divider" aria-hidden="true" />
-
-        <VenueShowcase {...baldoVenuePage.chefChapter} />
 
         <div className={`section__inner ${styles.venueCtaRow}`}>
           <a className="btn btn--primary" href="/it/menu/baldo-vino/">

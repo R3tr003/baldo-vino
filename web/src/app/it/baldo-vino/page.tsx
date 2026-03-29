@@ -136,26 +136,6 @@ export default function Page() {
           </ul>
         </nav>
 
-        <section
-          className={clsx('section reveal', styles.landingBaldoCloser)}
-          aria-label="Prossimi passi"
-        >
-          <div className={clsx('section__inner', styles.landingBaldoCloserInner)}>
-            <p className={styles.landingBaldoCloserQuote}>
-              &ldquo;La mia cucina è quel luogo in grado di ospitare vini provenienti da
-              molte parti del mondo.&rdquo;
-            </p>
-            <p className={styles.landingBaldoCloserAuthor}>— Francesco Balloni</p>
-            <div className={styles.landingBaldoCloserActions}>
-              <a className="btn btn--primary" href="/it/contatti/contatti/">
-                Contatti
-              </a>
-              <a className="btn" href="/it/#prenota">
-                Prenota
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
     </BaseLayout>
   );
